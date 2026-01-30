@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrustCheck AI - Digital Verification Services</title>
+    <meta name="description" content="Professional online verification services for job offers, companies, and websites. Protect yourself from scams with AI-powered verification.">
+    
+    <style>
+        /* ==================== CSS VARIABLES ==================== */
+        :root {
+            --navy: #003366;
+            --navy-light: #004d99;
+            --navy-dark: #001a33;
+            --gray: #6B7280;
+            --gray-light: #9CA3AF;
+            --gray-dark: #374151;
+            --accent: #0EA5E9;
+            --accent-light: #38BDF8;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --white: #FFFFFF;
+            --off-white: #F9FAFB;
+            --border: #E5E7EB;
+            
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* ==================== RESET & BASE ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-dark);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+        
+        /* ==================== TYPOGRAPHY ==================== */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--navy);
+            letter-spacing: -0.02em;
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+        }
+        
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+        
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        /* ==================== HEADER ==================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--navy);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-icon::before {
+            content: '✓';
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--navy);
+        }
+        
+        .logo-text span {
+            font-weight: 400;
+            color: var(--gray);
+        }
+        
+        .nav-cta {
+            padding: 0.75rem 2rem;
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .nav-cta:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(14, 165, 233, 0.15) 0%, transparent 50%);
+            animation: subtle-float 20s ease-in-out infinite;
+        }
+        
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(14, 165, 233, 0.2);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: 50px;
+            color: var(--accent-light);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: slide-up 0.8s ease-out;
+        }
+        
+        @keyframes slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            animation: slide-up 0.8s ease-out 0.2s both;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            animation: slide-up 0.8s ease-out 0.4s both;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: slide-up 0.8s ease-out 0.6s both;
+        }
+        
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(14, 165, 233, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--white);
+            transform: translateY(-3px);
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 4rem;
+            animation: slide-up 0.8s ease-out 0.8s both;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-light);
+            display: block;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        /* ==================== HOW IT WORKS SECTION ==================== */
+        .how-it-works {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--off-white);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+        
+        .step:hover {
+            transform: translateY(-10px);
+        }
+        
+        .step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--off-white) 0%, var(--white) 100%);
+            border-radius: 20px;
+            border: 2px solid var(--border);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+        
+        .step:hover::before {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            border-color: var(--navy);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
+            transition: all 0.4s ease;
+        }
+        
+        .step:hover .step-number {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(14, 165, 233, 0.5);
+        }
+        
+        .step h3 {
+            margin-bottom: 1rem;
+            transition: color 0.4s ease;
+        }
+        
+        .step:hover h3 {
+            color: var(--white);
+        }
+        
+        .step p {
+            color: var(--gray);
+            margin-bottom: 0;
+            transition: color 0.4s ease;
+        }
+        
+        .step:hover p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* ==================== PRICING SECTION ==================== */
+        .pricing {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--white) 0%, var(--off-white) 100%);
+        }
+        
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .pricing-card {
+            background: var(--white);
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .pricing-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent);
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured::before {
+            transform: scaleX(1);
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.5rem 3rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transform: rotate(45deg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .pricing-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-price span {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--gray);
+        }
+        
+        .pricing-description {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--gray-dark);
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .pricing-cta {
+            width: 100%;
+            padding: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+        }
+        
+        .btn-outline:hover {
+            background: var(--navy);
+            color: var(--white);
+        }
+        
+        /* ==================== TRUST SECTION ==================== */
+        .trust {
+            padding: 4rem 2rem;
+            background: var(--navy);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .trust h2 {
+            color: var(--white);
+            margin-bottom: 3rem;
+        }
+        
+        .trust-icons {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .trust-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .trust-item:hover .trust-icon {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+        
+        .trust-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: var(--navy-dark);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 3rem 2rem 1.5rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo span {
+            color: var(--accent-light);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-light);
+        }
+        
+        .footer-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 2rem 0;
+        }
+        
+        .footer-bottom {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+            
+            .hero-content {
+                padding: 3rem 1rem;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            
+            .trust-icons {
+                gap: 2rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        /* ==================== SCROLL ANIMATIONS ==================== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">
+                <div class="logo-icon"></div>
+                <span class="logo-text">TrustCheck <span>AI</span></span>
+            </a>
+            <button class="nav-cta" onclick="scrollToContact()">Get Started</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <span class="hero-badge">🛡️ AI-Powered Verification</span>
+            <h1>Protect Yourself from<br>Online Scams</h1>
+            <p class="hero-subtitle">
+                Professional verification services for job offers, companies, and websites. 
+                Get comprehensive reports in 24 hours and make informed decisions with confidence.
+            </p>
+            <div class="hero-cta">
+                <button class="btn btn-primary" onclick="scrollToContact()">Start Verification</button>
+                <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Verifications Completed</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Accuracy Rate</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">24h</span>
+                    <span class="stat-label">Report Delivery</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Simple Process</span>
+                <h2>How It Works</h2>
+                <p style="max-width: 600px; margin: 0 auto; color: var(--gray);">
+                    Get professional verification in three easy steps
+                </p>
+            </div>
+            
+            <div class="steps">
+                <div class="step fade-in">
+                    <div class="step-number">1</div>
+                    <h3>Submit Information</h3>
+                    <p>
+                        Provide us with the website, company name, or job offer details you want verified.
+                        All information is kept strictly confidential.
+                    </p>
+                </div>
+                
+                <div class="step fade-in">
+                    <div class="step-number">2</div>
+                    <h3>AI Analysis</h3>
+                    <p>
+                        Our advanced AI system checks domain age, company registries, email authenticity,
+                        and cross-references multiple databases.
+                    </p>
+                </div>
+                
+                <div class="step fade-in">
+                    <div class="step-number">3</div>
+                    <h3>Get Your Report</h3>
+                    <p>
+                        Receive a comprehensive PDF report with risk score, detailed findings,
+                        and professional recommendations within 24 hours.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Transparent Pricing</span>
+                <h2>Choose Your Plan</h2>
+                <p style="max-width: 600px; margin: 0 auto; color: var(--gray);">
+                    Professional verification services at affordable prices
+                </p>
+            </div>
+            
+            <div class="pricing-cards">
+                <!-- Basic Plan -->
+                <div class="pricing-card fade-in">
+                    <h3 class="pricing-name">Basic Check</h3>
+                    <div class="pricing-price">$15<span>/report</span></div>
+                    <p class="pricing-description">Perfect for single verification</p>
+                    <ul class="pricing-features">
+                        <li>Domain age & SSL check</li>
+                        <li>Google Safe Browsing scan</li>
+                        <li>Basic company lookup</li>
+                        <li>Email domain verification</li>
+                        <li>Risk score (0-100)</li>
+                        <li>PDF report delivery</li>
+                    </ul>
+                    <button class="btn btn-outline pricing-cta" onclick="scrollToContact()">Get Started</button>
+                </div>
+                
+                <!-- Professional Plan (Featured) -->
+                <div class="pricing-card featured fade-in">
+                    <span class="pricing-badge">POPULAR</span>
+                    <h3 class="pricing-name">Professional</h3>
+                    <div class="pricing-price">$35<span>/report</span></div>
+                    <p class="pricing-description">Comprehensive verification</p>
+                    <ul class="pricing-features">
+                        <li>Everything in Basic</li>
+                        <li>Full company registry search</li>
+                        <li>LinkedIn verification</li>
+                        <li>Email header analysis</li>
+                        <li>Website history check</li>
+                        <li>Detailed evidence screenshots</li>
+                        <li>Priority 24h delivery</li>
+                    </ul>
+                    <button class="btn btn-primary pricing-cta" onclick="scrollToContact()">Get Started</button>
+                </div>
+                
+                <!-- Enterprise Plan -->
+                <div class="pricing-card fade-in">
+                    <h3 class="pricing-name">Enterprise</h3>
+                    <div class="pricing-price">$99<span>/month</span></div>
+                    <p class="pricing-description">For businesses & recruiters</p>
+                    <ul class="pricing-features">
+                        <li>5 verifications per month</li>
+                        <li>All Professional features</li>
+                        <li>Priority support</li>
+                        <li>Custom branding on reports</li>
+                        <li>Dedicated account manager</li>
+                        <li>API access (coming soon)</li>
+                    </ul>
+                    <button class="btn btn-outline pricing-cta" onclick="scrollToContact()">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust">
+        <div class="container">
+            <h2>Why Trust TrustCheck AI?</h2>
+            <div class="trust-icons">
+                <div class="trust-item">
+                    <div class="trust-icon">🔒</div>
+                    <span class="trust-label">Bank-Level Encryption</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">⚡</div>
+                    <span class="trust-label">24-Hour Turnaround</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">🎯</div>
+                    <span class="trust-label">98% Accuracy</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">🤝</div>
+                    <span class="trust-label">Confidential Service</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <h2 class="footer-logo">TrustCheck <span>AI</span></h2>
+            <p style="max-width: 500px; margin: 1rem auto 2rem;">
+                Protect yourself from online scams with professional AI-powered verification services.
+            </p>
+            
+            <div style="margin: 2rem 0;">
+                <button class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 3rem;" onclick="initiateContact()">
+                    📧 Get Your Verification Report
+                </button>
+            </div>
+            
+            <p style="margin: 2rem 0; opacity: 0.8;">
+                📧 Email: <a href="mailto:verify@trustcheck.ai" style="color: var(--accent-light); text-decoration: none;">verify@trustcheck.ai</a><br>
+                📱 WhatsApp: <a href="https://wa.me/1234567890" style="color: var(--accent-light); text-decoration: none;">+1 (234) 567-8900</a>
+            </p>
+            
+            <div class="footer-links">
+                <a href="#how-it-works">How It Works</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact</a>
+            </div>
+            
+            <div class="footer-divider"></div>
+            
+            <p class="footer-bottom">
+                © 2026 TrustCheck AI. All rights reserved. | Digital Verification Services
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scroll function
+        function scrollToContact() {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Contact initiation
+        function initiateContact() {
+            // You can replace this with a form modal or redirect to email
+            const email = 'verify@trustcheck.ai';
+            const subject = 'Verification Request - TrustCheck AI';
+            const body = 'Hello,\n\nI would like to request a verification report.\n\n[Please provide details about what you want verified]';
+            window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        // Add stagger delay to steps
+        document.querySelectorAll('.step').forEach((step, index) => {
+            step.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        // Add stagger delay to pricing cards
+        document.querySelectorAll('.pricing-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.2}s`;
+        });
+    </script>
+</body>
+</html>
