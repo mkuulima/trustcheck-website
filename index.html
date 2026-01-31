@@ -921,9 +921,22 @@
             </p>
             
             <div style="margin: 2rem 0;">
-                <button class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 3rem;" onclick="initiateContact()">
-                    📧 Get Your Verification Report
-                </button>
+<form action="https://formspree.io/f/mqebnaew" method="POST">
+    <input type="hidden" name="_subject" value="New TrustCheck Verification Request">
+
+    <input type="text" name="name" placeholder="Your Full Name" required>
+
+    <input type="email" name="email" placeholder="Your Email Address" required>
+
+    <input type="tel" name="phone" placeholder="WhatsApp Number">
+
+    <textarea name="message" placeholder="Paste job offer / website / company details" required></textarea>
+
+    <button type="submit">
+        📧 Request Verification Report
+    </button>
+</form>
+
             </div>
             
             <p style="margin: 2rem 0; opacity: 0.8;">
